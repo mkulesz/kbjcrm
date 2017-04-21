@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 '''
@@ -15,7 +16,7 @@ class OsobaKontaktowa(models.Model):
         return rv_value
 '''
 class Osoba(models.Model):
-    IdOsoba     = models.CharField(auto_created=True, primary_key=True, max_length=10)
+    IdOsoba     = models.IntegerField(auto_created=True, primary_key=True, editable=False)
     Imie        = models.CharField(max_length=20)
     Nazwisko    = models.CharField(max_length=40)
     Telefon     = models.IntegerField()
@@ -25,8 +26,10 @@ class Osoba(models.Model):
     class Meta:
         verbose_name_plural = "Osoba"
 
+
+
 class Kontrahent(models.Model):
-    IdKontrahent    = models.CharField(auto_created=True, primary_key=True, max_length=10)
+    IdKontrahent    = models.IntegerField(auto_created=True, primary_key=True, editable=False)
     Nazwa           = models.CharField(max_length=50)
     Opis            = models.TextField()
     Adres           = models.TextField()
@@ -34,6 +37,7 @@ class Kontrahent(models.Model):
     Regon           = models.CharField(max_length=10)
     class Meta:
         verbose_name_plural = "Kontrahent"
+
 
 
 
