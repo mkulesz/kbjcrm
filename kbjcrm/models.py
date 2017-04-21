@@ -37,7 +37,9 @@ class Osoba(models.Model):
         verbose_name_plural = "Osoba"
 
     def __str__(self):
-        return  self.Login
+        retstr =    str(self.IdOsoba)+' '+self.Imie+' '+self.Nazwisko+' '+self.Mail
+
+        return retstr
 
 class Kontrahent(models.Model):
     IdKontrahent    = models.IntegerField(auto_created=True, primary_key=True, editable=False)
