@@ -45,6 +45,8 @@ class Kontrahent(models.Model):
 class Kontrahent_Osoba(models.Model):
     IdOsoba         = models.ForeignKey(Osoba)
     IdKontrahent    = models.ForeignKey(Kontrahent)
+    class Meta:
+        verbose_name_plural = "Kontrahent-Osoba"
 
 class Produkt(models.Model):
     IdProduktu      = models.IntegerField(auto_created=True, primary_key=True, editable=False)
