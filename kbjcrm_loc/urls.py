@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-#from kbjcrm.views import hello
+from kbjcrm.views import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-#    url(r'^hello/$', hello),
+    url(r'^view/$', views),
 ]

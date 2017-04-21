@@ -3,5 +3,5 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 
-def hello(request):
-    return HttpResponse("Hello world")
+def views(request):
+    return render(request, 'views/first_view.html', {})
