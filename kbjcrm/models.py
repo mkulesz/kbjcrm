@@ -26,7 +26,8 @@ class Osoba(models.Model):
     class Meta:
         verbose_name_plural = "Osoba"
 
-
+    def __str__(self):
+        return  self.Login
 
 class Kontrahent(models.Model):
     IdKontrahent    = models.IntegerField(auto_created=True, primary_key=True, editable=False)
@@ -38,6 +39,30 @@ class Kontrahent(models.Model):
     class Meta:
         verbose_name_plural = "Kontrahent"
 
+    def __str__(self):
+        return self.Nazwa
 
+class Kontrahent_Osoba(models.Model):
+    IdOsoba         = models.ForeignKey(Osoba)
+    IdKontrahent    = models.ForeignKey(Kontrahent)
 
+class Produkt(models.Model):
+    IdProduktu      = models.IntegerField(auto_created=True, primary_key=True, editable=False)
+    Nazwa           = models.CharField(max_length=50)
+    class Meta:
+        verbose_name_plural = "Produkt"
 
+    def __str__(self):
+        return self.Nazwa
+
+class Kontrakt(models.Model):
+    Nr              = models.IntegerField(auto_created=True, primary_key=True, editable=False)
+    Data_zawarcia   = models.DateField()
+    Kontrahent      = models.ForeignKey(Kontrahent)
+    Produkt         = models.ForeignKey(Produkt)
+    Data_platnosci_fizycznej    = models.DateField()
+    class Meta:
+        verbose_name_plural = "Kontrakt"
+
+    def __str__(self):
+        return self.Nr
