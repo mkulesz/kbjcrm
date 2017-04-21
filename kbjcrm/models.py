@@ -15,6 +15,15 @@ class OsobaKontaktowa(models.Model):
         rv_value = self.pesel + self.imie + self.nazwisko
         return rv_value
 '''
+
+class Rola(models.Model):
+    Rola    = models.CharField(max_length=30, primary_key=True, null=False)
+    class Meta:
+        verbose_name_plural= "Rola"
+
+    def __str__(self):
+        return self.Rola
+
 class Osoba(models.Model):
     IdOsoba     = models.IntegerField(auto_created=True, primary_key=True, editable=False)
     Imie        = models.CharField(max_length=20)
@@ -23,6 +32,7 @@ class Osoba(models.Model):
     Mail        = models.EmailField()
     Login       = models.CharField(max_length=10)
     Hasło       = models.CharField(max_length=20)
+    Rola        = models.ForeignKey(Rola)
     class Meta:
         verbose_name_plural = "Osoba"
 
@@ -58,11 +68,13 @@ class Produkt(models.Model):
         return self.Nazwa
 
 class Kontrakt(models.Model):
-    Nr              = models.IntegerField(auto_created=True, primary_key=True, editable=False)
-    Data_zawarcia   = models.DateField()
-    Kontrahent      = models.ForeignKey(Kontrahent)
-    Produkt         = models.ForeignKey(Produkt)
+    Nr                          = models.IntegerField(auto_created=True, primary_key=True, editable=False)
+    Data_zawarcia               = models.DateField()
+    Kontrahent                  = models.ForeignKey(Kontrahent)
+    Produkt                     = models.ForeignKey(Produkt)
     Data_platnosci_fizycznej    = models.DateField()
+    Kwota_oplaty_licencyjnej    = models.IntegerField(default=0)
+    RCP                         = models.CharField(max_length=30, default= '')
     class Meta:
         verbose_name_plural = "Kontrakt"
 
