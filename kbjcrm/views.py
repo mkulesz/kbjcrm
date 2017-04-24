@@ -8,5 +8,6 @@ def views(request):
     return render(request, 'views/first_view.html', {})
 
 def rcp(request):
-    lv_list = Control.select
+#    year = request.POST['Year']
+    lv_list = Control.Select(2017)
     return render(request, 'views/rcp_view.html', {'obj': lv_list})
