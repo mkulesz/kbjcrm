@@ -1,20 +1,4 @@
 from django.db import models
-from django import forms
-
-# Create your models here.
-'''
-class OsobaKontaktowa(models.Model):
-    pesel       = models.CharField(max_length=11, primary_key=True, )
-    imie        = models.CharField(max_length=15)
-    nazwisko    = models.CharField(max_length=20)
-
-    class Meta:
-        verbose_name_plural = "Osoba Kontaktowa"
-
-    def __str__(self):
-        rv_value = self.pesel + self.imie + self.nazwisko
-        return rv_value
-'''
 
 class Rola(models.Model):
     Rola    = models.CharField(max_length=30, primary_key=True, null=False)
