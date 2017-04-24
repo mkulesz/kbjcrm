@@ -28,10 +28,10 @@ class Osoba(models.Model):
     IdOsoba     = models.IntegerField(auto_created=True, primary_key=True, editable=False)
     Imie        = models.CharField(max_length=20)
     Nazwisko    = models.CharField(max_length=40)
-    Telefon     = models.IntegerField(blank=True)
-    Mail        = models.EmailField(blank=True)
-    Login       = models.CharField(max_length=10, blank=True)
-    Hasło       = models.CharField(max_length=20, blank=True)
+    Telefon     = models.IntegerField(blank=True, null=True)
+    Mail        = models.EmailField(blank=True, null=True)
+    Login       = models.CharField(max_length=10, blank=True, null=True)
+    Hasło       = models.CharField(max_length=20, blank=True, null=True)
     Rola        = models.ForeignKey(Rola)
     class Meta:
         verbose_name_plural = "Osoba"
@@ -44,8 +44,8 @@ class Osoba(models.Model):
 class Kontrahent(models.Model):
     IdKontrahent    = models.IntegerField(auto_created=True, primary_key=True, editable=False)
     Nazwa           = models.CharField(max_length=50)
-    Opis            = models.TextField(blank=True)
-    Adres           = models.TextField(blank=True)
+    Opis            = models.TextField(blank=True, null=True)
+    Adres           = models.TextField(blank=True, null=True)
     NIP             = models.IntegerField()
     Regon           = models.CharField(max_length=10, blank=True)
     class Meta:
