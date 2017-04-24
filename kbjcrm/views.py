@@ -11,7 +11,6 @@ def views(request):
 def rcp(request):
     if request.method == 'POST':
         year = request.POST.get('Year')
-#    year = request.POST['Year']
         lv_list = Control.Select(year)
         return render(request, 'views/rcp_view.html', {'obj': lv_list})
     return render(request, 'views/rcp_view.html', {'obj': ''})

@@ -74,11 +74,22 @@ class Kontrakt(models.Model):
     Data_zawarcia               = models.DateField()
     Kontrahent                  = models.ForeignKey(Kontrahent)
     Produkt                     = models.ForeignKey(Produkt)
-    Data_platnosci_fizycznej    = models.DateField()
-    Kwota_oplaty_licencyjnej    = models.IntegerField(default=0)
     RCP                         = models.CharField(max_length=30, default= '')
     class Meta:
         verbose_name_plural = "Kontrakt"
 
     def __str__(self):
         return self.RCP
+
+class Naleznosc(models.Model):
+    IDKonta         = models.ForeignKey(Kontrakt)
+    IDNaleznosc     = models.IntegerField(auto_created=True, primary_key=True, editable=False)
+    Data_platnosci  = models.DateField()
+    Tytul           = models.CharField(max_length=50, null=True, blank=True)
+    Kwota_oplaty    = models.IntegerField(default=0)
+    Zrealizowane    = models.BooleanField()
+    class Meta:
+        verbose_name_plural = "Należność"
+
+    def __str__(self):
+        return self.Tytul
