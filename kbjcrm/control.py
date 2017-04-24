@@ -1,6 +1,6 @@
-from kbjcrm.models import Kontrakt
+from kbjcrm.models import *
 
 class Control:
     def Select( year ):
-        select = Kontrakt.objects.filter(Data_platnosci_fizycznej__year = year)
+        select = Naleznosc.objects.filter(Data_platnosci__year = year)
         return select

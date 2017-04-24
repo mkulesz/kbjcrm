@@ -92,4 +92,4 @@ class Naleznosc(models.Model):
         verbose_name_plural = "Należność"
 
     def __str__(self):
-        return self.Tytul
+        return str(self.IDKonta)
