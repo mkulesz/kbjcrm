@@ -5,8 +5,11 @@
     <title>Tabela RCP</title>
 </head>
 <body>
-    <input name="Year" type="number" min="1900" max="2099" step="1" value="2016">
-    <input type="submit" value="OK">
+    <form method="POST">
+        {% csrf_token %}
+        <input name="Year" type="number" min="1980" max="2020" step="1" value="2016">
+        <input type="submit" value="OK">
+    </form>
     <table>
         <tr>
             <th> Kod RCP</th>
@@ -20,6 +23,7 @@
             <td>{{ b.Kwota_oplaty_licencyjnej }}</td>
         </tr>
         {% endfor %}
+
     </table>
 </body>
 </html>
