@@ -81,4 +81,4 @@ class Kontrakt(models.Model):
         verbose_name_plural = "Kontrakt"
 
     def __str__(self):
-        return self.Nr
+        return self.RCP

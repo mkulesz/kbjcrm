@@ -7,5 +7,19 @@
 <body>
     <input id="Year" type="number" min="1900" max="2099" step="1" value="2016">
     <input type="submit" value="OK">
+    <table>
+        <tr>
+            <th> Kod RCP</th>
+            <th> Data Opłaty</th>
+            <th> Kwota Opłaty</th>
+        </tr>
+        {% for b in obj %}
+        <tr>
+            <td>{{ b.RCP }}</td>
+            <td>{{ b.Data_platnosci_fizycznej }}</td>
+            <td>{{ b.Kwota_oplaty_licencyjnej }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
