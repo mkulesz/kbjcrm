@@ -1,23 +1,23 @@
 from kbjcrm.models import *
 from datetime import *
 
+
 class Control:
-    def select( year ):
-        select = Naleznosc.objects.filter(Data_platnosci__year = year)
+    def select(year):
+        select = Naleznosc.objects.filter(Data_platnosci__year=year)
         return select
 
-    def generate( number, idrcp ):
-
-
-        rcp = Naleznosc.objects.filter(IDKontrakt=idrcp)
-        RCP = Naleznosc()
-        RCP.IDKonttrakt = rcp
-        startdate = rcp.Data_platnosci
-        RCP.Data_platnosci = date(year=int(number), month=startdate.month, day=startdate.day)
-        RCP.Tytul = rcp.Tytul + ' ' + str(RCP.Data_platnosci)
-        RCP.Kwota_oplaty = rcp.Kwota_oplaty
-        RCP.Zrealizowane = rcp.Zrealizowane
-        RCP.save()
+    def generate(number, idrcp):
+        for rcp in Kontrakt.objects.filter(Produkt__Nazwa=idrcp):
+            naleznosc = Naleznosc.objects.filter(IDKontrakt=rcp)
+            RCP = Naleznosc()
+            RCP.IDKonttrakt = naleznosc
+            startdate = naleznosc.Data_platnosci
+            RCP.Data_platnosci = date(year=int(number), month=startdate.month, day=startdate.day)
+            RCP.Tytul = naleznosc.Tytul + ' ' + str(RCP.Data_platnosci)
+            RCP.Kwota_oplaty = naleznosc.Kwota_oplaty
+            # RCP.Zrealizowane = naleznosc.Zrealizowane
+            RCP.save()
 
         return 0
 
