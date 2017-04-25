@@ -5,6 +5,16 @@
     <title>Tabela RCP</title>
 </head>
 <body>
+    <form>
+        <select name="RCPList">
+            {% for item in rcplist %}
+            <option> {{ item.IDKonta }}</option>
+            {% endfor %}
+        </select>
+
+        <input name="Generator" type="number" value="0"  maxlength="4">
+        <input type="submit" value="Generate">
+    </form>
     <form method="POST">
         {% csrf_token %}
         <input name="Year" type="number" min="1980" max="2020" step="1" value="2016">
