@@ -14,7 +14,7 @@ def rcp(request):
             number = request.POST.get('Generator_num')
             if int(number) > 0:
                 idrcp = request.POST.get('RCPList', None)
-                # Control.generate(number, idrcp)
+                Control.generate(number, idrcp)
                 return render(request, 'views/rcp_view.html',
                               {'obj': '', 'rcplist': Control.select_all(Control), 'idkonta': number})
     return render(request, 'views/rcp_view.html', {'obj': '', 'rcplist': Control.select_all(Control)})

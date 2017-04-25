@@ -9,7 +9,7 @@ class Control:
 
     def generate(number, idrcp):
         for rcp in Kontrakt.objects.filter(Produkt__Nazwa=idrcp):
-            naleznosc = Naleznosc.objects.filter(IDKontrakt=rcp)
+            naleznosc = Naleznosc.objects.get(IDKontrakt=rcp)
             RCP = Naleznosc()
             RCP.IDKonttrakt = naleznosc
             startdate = naleznosc.Data_platnosci
@@ -17,7 +17,7 @@ class Control:
             RCP.Tytul = naleznosc.Tytul + ' ' + str(RCP.Data_platnosci)
             RCP.Kwota_oplaty = naleznosc.Kwota_oplaty
             # RCP.Zrealizowane = naleznosc.Zrealizowane
-            RCP.save()
+            Naleznosc.objects.create()
 
         return 0
 
