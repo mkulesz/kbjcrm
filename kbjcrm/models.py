@@ -63,7 +63,7 @@ class Kontrakt(models.Model):
         verbose_name_plural = "Kontrakt"
 
     def __str__(self):
-        return self.RCP
+        return self.RCP   # don't change return
 
 class Naleznosc(models.Model):
     IDKonta         = models.ForeignKey(Kontrakt)
