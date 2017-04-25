@@ -63,10 +63,10 @@ class Kontrakt(models.Model):
         verbose_name_plural = "Kontrakt"
 
     def __str__(self):
-        return self.RCP   # don't change return
+        return self. RCP   # don't change return
 
 class Naleznosc(models.Model):
-    IDKonta         = models.ForeignKey(Kontrakt)
+    IDKontrakt      = models.ForeignKey(Kontrakt)
     IDNaleznosc     = models.IntegerField(auto_created=True, primary_key=True, editable=False)
     Data_platnosci  = models.DateField()
     Tytul           = models.CharField(max_length=50, null=True, blank=True)
@@ -76,4 +76,4 @@ class Naleznosc(models.Model):
         verbose_name_plural = "Należność"
 
     def __str__(self):
-        return str(self.IDKonta)
+        return str(self.IDKontrakt)

@@ -6,17 +6,17 @@
 </head>
 <body>
     <div>
-        <p> Generator nalezności</p>
+        <p> Generator licencji</p>
         <form method="POST">
             <select name="RCPList">
                 {% for item in rcplist %}
-                <option> {{ item.IDKonta }}</option>
+                <option> {{ item.Nazwa }}</option>
                 {% endfor %}
             </select>
             {% csrf_token %}
-            <input name="Generator_num" type="number" value="0" min="0" max="10">
+            <input name="Generator_num" type="number" min="1980" max="2020" step="1" value="0">
             <input name="Generator" type="submit" value="Generate">
-            {{ gen_number }}
+            {{ idkonta }}
         </form>
     </div>
     <div>
@@ -35,7 +35,7 @@
             </tr>
             {% for item in obj %}
             <tr>
-                <td>{{ item.IDKonta }}</td>
+                <td>{{ item.IDKontrakt }}</td>
                 <td>{{ item.Data_platnosci }}</td>
                 <td>{{ item.Kwota_oplaty }}</td>
             </tr>

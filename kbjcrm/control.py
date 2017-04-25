@@ -7,11 +7,13 @@ class Control:
         return select
 
     def generate( number, idrcp ):
-        rcp = Naleznosc.objects.filter(IDKonta=idrcp)
+
+
+        rcp = Naleznosc.objects.filter(IDKontrakt=idrcp)
         RCP = Naleznosc()
-        RCP.IDKonta = idrcp
-        StartDate = rcp.Data_platnosci
-        RCP.Data_platnosci = StartDate.replace(StartDate.year + 1)
+        RCP.IDKonttrakt = rcp
+        startdate = rcp.Data_platnosci
+        RCP.Data_platnosci = date(year=int(number), month=startdate.month, day=startdate.day)
         RCP.Tytul = rcp.Tytul + ' ' + str(RCP.Data_platnosci)
         RCP.Kwota_oplaty = rcp.Kwota_oplaty
         RCP.Zrealizowane = rcp.Zrealizowane
@@ -20,5 +22,5 @@ class Control:
         return 0
 
     def select_all(_self_):
-        select_all = Naleznosc.objects.all()
+        select_all = Produkt.objects.all()
         return select_all
