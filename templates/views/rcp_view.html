@@ -5,35 +5,42 @@
     <title>Tabela RCP</title>
 </head>
 <body>
-    <form>
-        <select name="RCPList">
-            {% for item in rcplist %}
-            <option> {{ item.IDKonta }}</option>
+    <div>
+        <p> Generator nalezności</p>
+        <form method="POST">
+            <select name="RCPList">
+                {% for item in rcplist %}
+                <option> {{ item.IDKonta }}</option>
+                {% endfor %}
+            </select>
+            {% csrf_token %}
+            <input name="Generator_num" type="number" value="0" min="0" max="10">
+            <input name="Generator" type="submit" value="Generate">
+            {{ gen_number }}
+        </form>
+    </div>
+    <div>
+        <br>
+        <p> Tabela licencji</p>
+        <form method="POST">
+            {% csrf_token %}
+            <input name="Year" type="number" min="1980" max="2020" step="1" value="2016">
+            <input name="List" type="submit" value="OK">
+        </form>
+        <table border="1">
+            <tr>
+                <th> Kod RCP</th>
+                <th> Data Opłaty</th>
+                <th> Kwota Opłaty</th>
+            </tr>
+            {% for item in obj %}
+            <tr>
+                <td>{{ item.IDKonta }}</td>
+                <td>{{ item.Data_platnosci }}</td>
+                <td>{{ item.Kwota_oplaty }}</td>
+            </tr>
             {% endfor %}
-        </select>
-
-        <input name="Generator" type="number" value="0"  maxlength="4">
-        <input type="submit" value="Generate">
-    </form>
-    <form method="POST">
-        {% csrf_token %}
-        <input name="Year" type="number" min="1980" max="2020" step="1" value="2016">
-        <input type="submit" value="OK">
-    </form>
-    <table>
-        <tr>
-            <th> Kod RCP</th>
-            <th> Data Opłaty</th>
-            <th> Kwota Opłaty</th>
-        </tr>
-        {% for item in obj %}
-        <tr>
-            <td>{{ item.IDKonta }}</td>
-            <td>{{ item.Data_platnosci }}</td>
-            <td>{{ item.Kwota_oplaty }}</td>
-        </tr>
-        {% endfor %}
-
-    </table>
+        </table>
+    </div>
 </body>
 </html>
