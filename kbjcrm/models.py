@@ -85,6 +85,7 @@ class Naleznosc(models.Model):
     Tytul = models.CharField(max_length=50, null=True, blank=True)
     Kwota_oplaty = models.IntegerField(default=0)
     Zrealizowane = models.BooleanField(default=False)
+    Kopia        = models.BooleanField(default=False, editable=False)
 
     class Meta:
         verbose_name_plural = "Należność"
