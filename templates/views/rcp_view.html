@@ -16,7 +16,9 @@
             {% csrf_token %}
             <input name="Generator_num" type="number" min="1980" max="2020" step="1" value="0">
             <input name="Generator" type="submit" value="Generate">
+            {% if idkonta != null %}
             Wygenerowano należność na rok: {{ idkonta }}
+            {% endif %}
         </form>
     </div>
     <div>
